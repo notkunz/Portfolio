@@ -926,13 +926,25 @@ footer p {
 
 @media (max-width: 900px) {
   .hero-photo-placeholder {
-    display: none;
+    display: flex;
+    position: static;
+    transform: none;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 32px;
+  }
+  .hero-inner {
+    text-align: center;
+    margin: 0 auto;
+  }
+  .hero-cta {
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
   nav {
-    padding: 18px 24px;
+    padding: 16px 20px;
   }
   .nav-links {
     display: none;
@@ -940,26 +952,130 @@ footer p {
   .nav-toggle {
     display: flex;
   }
+
   #hero {
-    padding: 100px 24px 60px;
+    padding: 90px 20px 60px;
+    flex-direction: column;
+    min-height: auto;
+    text-align: center;
   }
+  .hero-name {
+    font-size: clamp(36px, 11vw, 56px);
+  }
+  .hero-sub {
+    font-size: 15px;
+    margin: 0 auto 36px;
+  }
+  .hero-tag {
+    font-size: 10px;
+  }
+
   .hero-stats {
+    position: static;
+    flex-direction: row;
+    justify-content: center;
+    gap: 28px;
+    margin-top: 48px;
+    animation: fadeUp 0.8s 1s forwards;
+    opacity: 0;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 28px;
+  }
+
+  .hero-scroll {
     display: none;
   }
+
   section {
-    padding: 70px 24px;
+    padding: 60px 20px;
   }
+  .section-title {
+    font-size: clamp(26px, 7vw, 36px);
+    margin-bottom: 36px;
+  }
+  .section-label {
+    font-size: 9px;
+    margin-bottom: 12px;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
+  .about-text p {
+    font-size: 14px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+  }
+  .skill-pill {
+    padding: 10px 12px;
+    font-size: 10px;
+  }
+
   .projects-grid {
     grid-template-columns: 1fr;
+    gap: 18px;
   }
-  footer {
+  .project-card {
     padding: 24px;
+  }
+  .project-title {
+    font-size: 19px;
+  }
+
+  .timeline {
+    padding-left: 4px;
+  }
+  .timeline-item {
+    padding-left: 28px;
+    margin-bottom: 40px;
+  }
+  .timeline-role {
+    font-size: 17px;
+  }
+  .timeline-date {
+    font-size: 9px;
+  }
+
+  .contact-big {
+    font-size: clamp(30px, 9vw, 48px);
+  }
+  .contact-sub {
+    font-size: 11px;
+  }
+  .contact-email {
+    font-size: 12px;
+    word-break: break-all;
+  }
+
+  footer {
+    padding: 20px;
     flex-direction: column;
-    gap: 16px;
+    gap: 14px;
     text-align: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .hero-name {
+    font-size: 32px;
+  }
+  .btn-primary,
+  .btn-ghost {
+    padding: 12px 24px;
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-cta {
+    flex-direction: column;
+    width: 100%;
   }
 }
