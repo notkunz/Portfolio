@@ -105,6 +105,24 @@ const observer = new IntersectionObserver(
 
 document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
 
+// ===== Email button fallback =====
+const emailBtn = document.getElementById("emailBtn");
+if (emailBtn) {
+  emailBtn.addEventListener("click", (e) => {
+    setTimeout(() => {
+      navigator.clipboard
+        .writeText("esuruosoolakunle15@gmail.com")
+        .then(() => {
+          const original = emailBtn.textContent;
+          emailBtn.textContent = "Email Copied!";
+          setTimeout(() => {
+            emailBtn.textContent = original;
+          }, 2000);
+        })
+        .catch(() => {});
+    }, 100);
+  });
+}
 // ===== Animated Stat Counters =====
 const statNums = document.querySelectorAll(".stat-num");
 const statObserver = new IntersectionObserver(
