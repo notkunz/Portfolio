@@ -456,13 +456,14 @@ nav.scrolled {
 .hero-photo-placeholder {
   position: absolute;
   right: 60px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 130px;
+  transform: none;
   width: 220px;
   height: 220px;
   border-radius: 50%;
   border: 1px solid var(--border);
   background: var(--bg3);
+  object-fit: cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -473,7 +474,6 @@ nav.scrolled {
   letter-spacing: 1px;
   opacity: 0;
   animation: fadeLeft 0.8s 0.9s forwards;
-  object-fit: cover;
 }
 /* To add your photo: replace this div's content in index.html with
    <img src="assets/your-photo.jpg" alt="Olakunle Esuruoso" /> and add
