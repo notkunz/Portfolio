@@ -131,6 +131,7 @@ const statObserver = new IntersectionObserver(
       if (entry.isIntersecting) {
         const el = entry.target;
         const target = parseInt(el.getAttribute("data-count"), 10);
+        const suffix = el.getAttribute("data-suffix") || "";
         let current = 0;
         const step = Math.max(1, Math.ceil(target / 30));
         const interval = setInterval(() => {
@@ -139,7 +140,7 @@ const statObserver = new IntersectionObserver(
             current = target;
             clearInterval(interval);
           }
-          el.textContent = current;
+          el.textContent = `${current}${suffix}`;
         }, 40);
         statObserver.unobserve(el);
       }
