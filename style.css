@@ -1,12 +1,12 @@
 :root {
-  --bg: #080c10;
-  --bg2: #0d1117;
-  --bg3: #111820;
-  --accent: #00e5ff;
-  --text: #e8edf2;
-  --muted: #8892a4;
-  --border: rgba(0, 229, 255, 0.12);
-  --card: rgba(13, 17, 23, 0.85);
+  --bg: #f3efe8;
+  --bg2: #e8e1d6;
+  --bg3: #d9d0c2;
+  --accent: #c4512d;
+  --text: #1d2521;
+  --muted: #66706a;
+  --border: rgba(29, 37, 33, 0.2);
+  --card: rgba(255, 252, 246, 0.55);
 }
 
 *,
@@ -31,10 +31,12 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 229, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 229, 255, 0.025) 1px, transparent 1px);
-  background-size: 60px 60px;
+  background-image: radial-gradient(
+    rgba(29, 37, 33, 0.08) 0.7px,
+    transparent 0.7px
+  );
+  background-size: 9px 9px;
+  opacity: 0.22;
   pointer-events: none;
   z-index: 0;
 }
@@ -44,7 +46,7 @@ body::after {
   position: fixed;
   top: 0;
   left: 0;
-  height: 2px;
+  height: 3px;
   width: 0%;
   background: var(--accent);
   z-index: 10000;
@@ -56,13 +58,13 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
-  padding: 20px 60px;
+  padding: 22px 6vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
-  background: rgba(8, 12, 16, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(243, 239, 232, 0.86);
+  backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
   transition:
     border-color 0.3s,
@@ -70,26 +72,26 @@ nav {
 }
 nav.scrolled {
   border-bottom: 1px solid var(--border);
-  background: rgba(8, 12, 16, 0.95);
+  background: rgba(243, 239, 232, 0.97);
 }
 .nav-logo {
   font-family: "Space Mono", monospace;
   font-size: 14px;
-  color: var(--accent);
-  letter-spacing: 2px;
+  color: var(--text);
+  letter-spacing: 1px;
   text-decoration: none;
 }
 .nav-links {
   display: flex;
-  gap: 40px;
+  gap: 28px;
   list-style: none;
 }
 .nav-links a {
   font-family: "Space Mono", monospace;
-  font-size: 11px;
-  color: var(--muted);
+  font-size: 10px;
+  color: var(--text);
   text-decoration: none;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   transition: color 0.2s;
   position: relative;
@@ -148,7 +150,7 @@ nav.scrolled {
   width: 70%;
   max-width: 300px;
   height: 100vh;
-  background: var(--bg2);
+  background: var(--bg);
   border-left: 1px solid var(--border);
   z-index: 99;
   display: flex;
@@ -180,22 +182,26 @@ nav.scrolled {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 120px 60px 60px;
+  padding: 150px 6vw 90px;
   position: relative;
   z-index: 2;
-  gap: 60px;
+  gap: clamp(40px, 8vw, 120px);
 }
 .hero-left {
+  min-width: 0;
   max-width: 620px;
 }
 .hero-right {
+  width: min(29vw, 360px);
   flex-shrink: 0;
 }
 .hero-photo {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  border-radius: 2px;
+  border: 10px solid var(--text);
   object-fit: cover;
   opacity: 0;
   animation: fadeIn 0.8s 0.8s forwards;
@@ -205,7 +211,7 @@ nav.scrolled {
   font-family: "Space Mono", monospace;
   font-size: 11px;
   color: var(--accent);
-  letter-spacing: 3px;
+  letter-spacing: 1px;
   text-transform: uppercase;
   margin-bottom: 24px;
   opacity: 0;
@@ -215,7 +221,7 @@ nav.scrolled {
   font-size: clamp(48px, 7vw, 90px);
   font-weight: 800;
   line-height: 0.95;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
   margin-bottom: 24px;
   opacity: 0;
   animation: fadeUp 0.7s 0.25s forwards;
@@ -229,7 +235,7 @@ nav.scrolled {
 }
 
 .hero-sub {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--muted);
   line-height: 1.75;
   max-width: 500px;
@@ -249,7 +255,7 @@ nav.scrolled {
 /* BUTTONS - rectangular, not pill */
 .btn-primary {
   padding: 13px 28px;
-  background: var(--accent);
+  background: var(--text);
   color: var(--bg);
   font-family: "Space Mono", monospace;
   font-size: 11px;
@@ -258,15 +264,15 @@ nav.scrolled {
   text-transform: uppercase;
   text-decoration: none;
   border: none;
-  border-radius: 4px;
+  border-radius: 0;
   transition:
     opacity 0.2s,
     transform 0.2s;
   display: inline-block;
 }
 .btn-primary:hover {
-  opacity: 0.88;
-  transform: translateY(-1px);
+  background: var(--accent);
+  transform: translateY(-2px);
 }
 
 .btn-secondary {
@@ -279,7 +285,7 @@ nav.scrolled {
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 0;
   transition:
     border-color 0.2s,
     color 0.2s;
@@ -294,14 +300,14 @@ nav.scrolled {
 section {
   position: relative;
   z-index: 2;
-  padding: 100px 60px;
+  padding: 110px 6vw;
 }
 
 .section-label {
   font-family: "Space Mono", monospace;
   font-size: 10px;
   color: var(--accent);
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 16px;
   display: flex;
@@ -319,7 +325,7 @@ section {
   font-size: clamp(30px, 4vw, 50px);
   font-weight: 800;
   line-height: 1.1;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   margin-bottom: 56px;
 }
 
@@ -330,7 +336,7 @@ section {
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 10vw;
   align-items: start;
   max-width: 1100px;
 }
@@ -346,14 +352,15 @@ section {
   gap: 20px;
 }
 .about-card {
-  padding: 24px;
-  border: 1px solid var(--border);
+  padding: 20px 0;
+  border: none;
+  border-top: 1px solid var(--border);
   background: var(--card);
-  border-left: 3px solid var(--accent);
+  background: transparent;
   transition: border-color 0.2s;
 }
 .about-card:hover {
-  border-color: rgba(0, 229, 255, 0.3);
+  border-color: var(--accent);
 }
 .about-card h4 {
   font-size: 13px;
@@ -389,7 +396,7 @@ section {
   font-family: "Space Mono", monospace;
   font-size: 10px;
   color: var(--accent);
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   text-transform: uppercase;
 }
 .skill-pills {
@@ -400,12 +407,12 @@ section {
 .pill {
   padding: 7px 14px;
   border: 1px solid var(--border);
-  background: var(--bg3);
+  background: transparent;
   font-family: "Space Mono", monospace;
   font-size: 11px;
   color: var(--muted);
   letter-spacing: 0.5px;
-  border-radius: 3px;
+  border-radius: 0;
   transition:
     border-color 0.2s,
     color 0.2s;
@@ -414,7 +421,7 @@ section {
 .pill:hover {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(0, 229, 255, 0.04);
+  background: var(--bg2);
 }
 
 /* PROJECTS */
@@ -430,17 +437,18 @@ section {
 .project-card {
   border: 1px solid var(--border);
   background: var(--card);
-  padding: 32px;
+  padding: 28px 0 30px;
   position: relative;
   overflow: hidden;
   transition:
     transform 0.25s,
     border-color 0.25s;
-  border-top: 2px solid var(--accent);
+  border: none;
+  border-top: 1px solid var(--border);
 }
 .project-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 229, 255, 0.3);
+  border-color: var(--accent);
 }
 
 .project-num {
@@ -477,7 +485,7 @@ section {
   border: 1px solid var(--border);
   color: var(--muted);
   text-transform: uppercase;
-  border-radius: 2px;
+  border-radius: 0;
 }
 .project-link {
   font-family: "Space Mono", monospace;
@@ -508,7 +516,7 @@ section {
   top: 8px;
   bottom: 0;
   width: 1px;
-  background: linear-gradient(to bottom, var(--accent), transparent);
+  background: var(--border);
 }
 .timeline-item {
   padding-left: 36px;
@@ -522,9 +530,8 @@ section {
   top: 8px;
   width: 9px;
   height: 9px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
 }
 .timeline-date {
   font-family: "Space Mono", monospace;
@@ -586,13 +593,13 @@ section {
 .contact-chip {
   padding: 10px 18px;
   border: 1px solid var(--border);
-  background: var(--bg3);
+  background: transparent;
   font-family: "Space Mono", monospace;
   font-size: 11px;
   color: var(--muted);
   text-decoration: none;
   letter-spacing: 0.5px;
-  border-radius: 3px;
+  border-radius: 0;
   transition:
     border-color 0.2s,
     color 0.2s;
@@ -610,7 +617,7 @@ section {
 
 /* FOOTER */
 footer {
-  padding: 28px 60px;
+  padding: 28px 6vw;
   border-top: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
@@ -627,9 +634,8 @@ footer p {
 .footer-dot {
   width: 6px;
   height: 6px;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
   animation: blink 2s infinite;
 }
 
@@ -667,14 +673,19 @@ footer p {
   #hero {
     flex-direction: column;
     text-align: center;
-    padding-top: 100px;
+    justify-content: center;
+    gap: 38px;
+    padding-top: 120px;
   }
   .hero-right {
     order: -1;
+    width: min(42vw, 250px);
   }
   .hero-photo {
-    width: 120px;
-    height: 120px;
+    aspect-ratio: 4 / 5;
+  }
+  .hero-left {
+    width: min(100%, 620px);
   }
   .hero-cta {
     justify-content: center;
@@ -696,13 +707,21 @@ footer p {
     display: flex;
   }
   #hero {
-    padding: 90px 20px 60px;
+    min-height: auto;
+    gap: 30px;
+    padding: 110px 20px 72px;
+  }
+  .hero-right {
+    width: min(58vw, 220px);
   }
   .hero-name {
     font-size: clamp(36px, 11vw, 54px);
+    letter-spacing: -2px;
   }
   .hero-sub {
     font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 28px;
   }
   section {
     padding: 60px 20px;
@@ -715,7 +734,7 @@ footer p {
     grid-template-columns: 1fr;
   }
   .project-card {
-    padding: 24px;
+    padding: 24px 0 28px;
   }
   .contact-big {
     font-size: clamp(28px, 9vw, 44px);
